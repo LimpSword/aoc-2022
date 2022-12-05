@@ -1,35 +1,61 @@
 package day2
 
-import java.io.File
+import days.Day
 
-fun main() {
-    val lines = File("src/main/resources/day2").readLines()
-    var sum = 0
-    lines.forEach {
-        val opponentLetter = it.split(" ")[0]
-        val yourLetter = it.split(" ")[1]
+class Day2 : Day(2) {
 
-        var usedLetter = ""
-        var points = 0
-        when (yourLetter) {
-            "X" -> {
-                usedLetter = getLoseLetter(opponentLetter)
+    override fun partOne(): Int {
+        var sum = 0
+        inputList.forEach {
+            val yourLetter = it.split(" ")[1]
+
+            var points = 0
+            points += when (it) {
+                "A X" -> 3
+                "A Y" -> 6
+                "A Z" -> 0
+                "B X" -> 0
+                "B Y" -> 3
+                "B Z" -> 6
+                "C X" -> 6
+                "C Y" -> 0
+                "C Z" -> 3
+                else -> 0
             }
 
-            "Y" -> {
-                usedLetter = getDrawLetter(opponentLetter)
-                points = 3
-            }
-
-            "Z" -> {
-                usedLetter = getWinLetter(opponentLetter)
-                points = 6
-            }
+            sum += points + letterGain(yourLetter)
         }
-
-        sum += points + letterGain(usedLetter)
+        return sum
     }
-    println(sum)
+
+    override fun partTwo(): Any {
+        var sum = 0
+        inputList.forEach {
+            val opponentLetter = it.split(" ")[0]
+            val yourLetter = it.split(" ")[1]
+
+            var usedLetter = ""
+            var points = 0
+            when (yourLetter) {
+                "X" -> {
+                    usedLetter = getLoseLetter(opponentLetter)
+                }
+
+                "Y" -> {
+                    usedLetter = getDrawLetter(opponentLetter)
+                    points = 3
+                }
+
+                "Z" -> {
+                    usedLetter = getWinLetter(opponentLetter)
+                    points = 6
+                }
+            }
+
+            sum += points + letterGain(usedLetter)
+        }
+        return sum
+    }
 }
 
 fun getLoseLetter(opponentLetter: String): String {

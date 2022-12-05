@@ -1,8 +1,15 @@
 package day1
 
-import java.io.File
+import days.Day
 
-fun main() {
-    val lines = File("src/main/resources/day1").readLines().joinToString("\n")
-    println(lines.split("\n\n").map { it -> it.split("\n").sumOf { it.toInt() } }.sorted().takeLast(1).sum())
+class Day1 : Day(1) {
+
+    override fun partOne(): Int {
+        return inputList.joinToString("\n").split("\n\n").maxOfOrNull { it -> it.split("\n").sumOf { it.toInt() } }!!
+    }
+
+    override fun partTwo(): Int {
+        return inputList.joinToString("\n").split("\n\n").map { it -> it.split("\n").sumOf { it.toInt() } }.sorted().takeLast(3).sum()
+    }
+
 }

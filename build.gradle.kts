@@ -1,7 +1,12 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    application
     kotlin("jvm") version "1.7.21"
+}
+
+application {
+    mainClass.set("util.Runner")
 }
 
 group = "fr.limpsword"
@@ -12,6 +17,8 @@ repositories {
 }
 
 dependencies {
+    implementation("org.reflections", "reflections", "0.10.2")
+
     testImplementation(kotlin("test"))
 }
 
