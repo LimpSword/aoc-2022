@@ -55,16 +55,18 @@ object Runner {
         println("\n=== DAY ${dayNumber(dayClass.simpleName)} ===")
         val day = dayClass.constructors[0].newInstance() as Day
 
+        val parsedInput = measureTimedValue { day.parsing() }
         val partOne = measureTimedValue { day.partOne() }
         val partTwo = measureTimedValue { day.partTwo() }
-        printParts(partOne, partTwo)
+        printParts(parsedInput, partOne, partTwo)
     }
 
-    private fun printParts(partOne: TimedValue<Any>, partTwo: TimedValue<Any>) {
+    private fun printParts(parsedInput: TimedValue<*>, partOne: TimedValue<Any>, partTwo: TimedValue<Any>) {
         val padding = max(
             partOne.value.toString().length,
             partTwo.value.toString().length
         ) + 14        // 14 is 8 (length of 'Part 1: ') + 6 more
+        println("Part 0: Parsing".padEnd(padding, ' ') + "(${parsedInput.duration})")
         println("Part 1: ${partOne.value}".padEnd(padding, ' ') + "(${partOne.duration})")
         println("Part 2: ${partTwo.value}".padEnd(padding, ' ') + "(${partTwo.duration})")
     }

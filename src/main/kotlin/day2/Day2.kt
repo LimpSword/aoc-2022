@@ -4,6 +4,10 @@ import days.Day
 
 class Day2 : Day(2) {
 
+    override fun parsing() {
+
+    }
+
     override fun partOne(): Int {
         var sum = 0
         inputList.forEach {

@@ -4,6 +4,10 @@ import days.Day
 
 class Day5 : Day(5) {
 
+    override fun parsing() {
+
+    }
+
     override fun partOne(): Any {
         val map = HashMap<Int, ArrayDeque<Char>>()
         var count = 0

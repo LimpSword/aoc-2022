@@ -4,6 +4,11 @@ import days.Day
 
 
 class Day3 : Day(3) {
+
+    override fun parsing() {
+
+    }
+
     override fun partOne(): Int {
         val map = HashMap<Char, Char>()
         var sum = 0

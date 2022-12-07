@@ -10,6 +10,8 @@ abstract class Day(dayNumber: Int) {
     protected val inputList: List<String> by lazy { File(inputLocation).readLines() }
     protected val inputString: String by lazy { File(inputLocation).readText() }
 
+    abstract fun parsing()
+
     abstract fun partOne(): Any
 
     abstract fun partTwo(): Any

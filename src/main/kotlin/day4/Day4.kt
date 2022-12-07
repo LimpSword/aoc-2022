@@ -3,6 +3,9 @@ package day4
 import days.Day
 
 class Day4 : Day(4) {
+    override fun parsing() {
+
+    }
 
     override fun partOne(): Int {
         var count = 0
